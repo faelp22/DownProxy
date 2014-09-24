@@ -1,15 +1,31 @@
 <div class="container">
 
-      <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
-      </div>
-      
-      <?php get_content(); ?>
-
-    </div> <!-- /container -->
+    <div class="row">
+        <h2><a href="<?php echo $index; ?>"><?php echo $msgTitle; ?></a></h2>
+        <h4><span id="msg"></span><span id="tempo"></span>:<span id="tempo2"></span>!</h4>
+        <hr>
+        <form class="form" action="index.php" method="POST">
+            <label>Novo Nome: </label>
+            <input type="text" name="nome" required="required" />
+            <label>URL: </label>
+            <input type="text" name="url" required="required" />
+            <button class="btn-main btn btn-success btn-sm" type="submit">Furar</button>
+        </form>
+        <hr>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>File Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php get_content(); ?>
+            </tbody>
+        </table>
+        <hr>
+    </div>
+</div> <!-- /container -->
