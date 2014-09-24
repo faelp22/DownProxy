@@ -1,0 +1,25 @@
+{
+    "name": "faelp22/proxy",
+    "description": "Simple Application for download files",
+    "license": "MIT",
+    "keywords": ["Fura proxy"],
+    "homepage": "http://phptutor.bl.ee/proxy",
+    "type": "structure",
+    "version": "0.7",
+    "authors": [
+        {
+            "name": "Isael Sousa",
+            "email": "faelp22@hotmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "faelp22/common_hash": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+            "controller": "",
+            "model": ""
+        }
+    }
+}
