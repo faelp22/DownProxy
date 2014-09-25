@@ -17,7 +17,7 @@ O sistema precisa de alguns requisitos para funcionar.
 
 OBJETIVO
 ========
-Essa ferramenta a foi desenvolvida com o intuito de possibilitar download de aquivos para um servidor remotos facilitando assim a transferência para uma rede restrita.
+Essa ferramenta foi desenvolvida com o intuito de possibilitar download de aquivos para um servidor remotos facilitando assim a transferência para uma rede restrita.
 
 Este sistema é uma ferramenta de estudo e o mal uso desta cabe a responsabilidade do usuário.
 
