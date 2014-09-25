@@ -1,11 +1,11 @@
 {
-    "name": "faelp22/proxy",
-    "description": "Simple Application for download files",
-    "license": "MIT",
-    "keywords": ["Fura proxy"],
-    "homepage": "http://phptutor.bl.ee/proxy",
-    "type": "structure",
-    "version": "0.7",
+    "name": "faelp22/DownProxy",
+    "description": "Sistema para gerenciamento de download remotos",
+    "license": "GNU GPL v3",
+    "keywords": ["download, remoto, externo"],
+    "homepage": "https://github.com/faelp22/DownProxy",
+    "type": "Application",
+    "version": "1.0",
     "authors": [
         {
             "name": "Isael Sousa",

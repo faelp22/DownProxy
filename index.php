@@ -1,16 +1,23 @@
 <?php
 session_start();
+
 // Setup autoloading
 require 'init_autoloader.php';
 
-\controller\ValidarGet::error();
+/**
+ * Start pricipal do sistema.
+ * @author Isael Sousa <faelp22@hotmail.com>
+ */
 
-$timeCliente = 1;
+\controller\ListeningGet::error();
+
+$timeCliente = 10;
 $limitSizeFile = 50;
+
 $time = \model\Date::nDate('now');
 $path = \PROJECT_PATH . 'temp' . \DS;
 $index = \PROJECT_INDEX;
-$msgTitle = \controller\cpv::get_title();
+$msgTitle = \controller\CoreProcess::get_title();
 
 if (isset($_SESSION['proxy'])):
     $avv = $_SESSION['proxy'];
@@ -30,14 +37,14 @@ endif;
 
 //Garbage collector
 if(isset($_SESSION['folder'])):
-    \controller\cpv::garbageCollector($path, $timeCliente);
+    \model\GarbageCollector::garbageCollectorInit($path, $timeCliente);
 endif;
 
 if (isset($_POST['url'])):
     $fileUrl = $_POST['url'];
     $fileName = $_POST['nome'];
-    
-    $fileSize = \controller\cpv::get_remote_filesize($fileUrl);
+    $fileName .= '.new';
+    $fileSize = \controller\CoreProcess::get_remote_filesize($fileUrl);
     if(($fileSize / 1024)/1024 >= $limitSizeFile):
         header('Location: '.\PROJECT_INDEX.'?error=file_size');
     else:
@@ -47,15 +54,15 @@ endif;
 
 function get_css() {
     global $index;
-    echo \controller\cpv::get_css($index, 'view/bootstrap/css/bootstrap.min.css');
-    echo \controller\cpv::get_css($index, 'view/main.css');
+    echo \controller\CoreProcess::get_css($index, 'view/bootstrap/css/bootstrap.min.css');
+    echo \controller\CoreProcess::get_css($index, 'view/main.css');
 }
 
 function get_js() {
     global $index;
-    echo \controller\cpv::get_js($index, 'view/jquery/jquery-2.1.1.min.js');
-    echo \controller\cpv::get_js($index, 'view/bootstrap/js/bootstrap.min.js');
-    echo \controller\cpv::get_js($index, 'view/main.js');
+    echo \controller\CoreProcess::get_js($index, 'view/jquery/jquery-2.1.1.min.js');
+    echo \controller\CoreProcess::get_js($index, 'view/bootstrap/js/bootstrap.min.js');
+    echo \controller\CoreProcess::get_js($index, 'view/main.js');
 }
 
 function get_content() {
@@ -70,7 +77,7 @@ function get_content() {
             echo '<td>' . $n . '</td>';
             echo "<td><a href='" . $index . \DS . $arquivo . "'>" . $arquivo . "</a></td>";
             $temp2 = filemtime($path . $pasta . \DS . $arquivo);
-            $temp2C = new DateTime();
+            $temp2C = \model\Date::nDate();
             $temp2C->setTimezone(new DateTimezone("America/Fortaleza"));
             $temp2C->setTimestamp($temp2);
             echo '<td>' . $temp2C->format('d/m/Y H:i:s') . '</td>';
@@ -81,4 +88,4 @@ function get_content() {
     $diretorio->close();
 }
 
-require_once 'view/index.php';
+require_once 'view/layout.php';

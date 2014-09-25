@@ -4,12 +4,11 @@ namespace model;
 
 /**
  * Description of GetFile
- * Class par fazer downlaod de arquivos remotos
+ * Class para fazer downlaod de arquivos remotos
  * @author Isael Sousa <faelp22@hotmail.com>
  */
 
 class GetFile {
-    //put your code here
     
     public static function  get_File($Path, $Url, $nameFile){
         

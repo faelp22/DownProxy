@@ -1,7 +1,10 @@
 body {
-  min-height: 2000px;
   padding-top: 14px;
 }
 btn-main {
     margin-top: -3px;
+}
+.msg{
+    text-align: center;
+    margin-top: 25%;
 }

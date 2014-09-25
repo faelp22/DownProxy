@@ -1,16 +1,11 @@
 <div class="container">
 
     <div class="row">
+        <a href="https://github.com/faelp22/DownProxy/blob/master/LICENSE"><img class="pull-right" src="http://www.gnu.org/graphics/gplv3-88x31.png"></a>
         <h2><a href="<?php echo $index; ?>"><?php echo $msgTitle; ?></a></h2>
         <h4><span id="msg"></span><span id="tempo"></span>:<span id="tempo2"></span>!</h4>
         <hr>
-        <form class="form" action="index.php" method="POST">
-            <label>Novo Nome: </label>
-            <input type="text" name="nome" required="required" />
-            <label>URL: </label>
-            <input type="text" name="url" required="required" />
-            <button class="btn-main btn btn-success btn-sm" type="submit">Furar</button>
-        </form>
+        <?php require_once \PROJECT_PATH.'/view/forms/formIndex.phtml'; ?>
         <hr>
     </div>
     <div class="row">
@@ -28,4 +23,3 @@
         </table>
         <hr>
     </div>
-</div> <!-- /container -->
