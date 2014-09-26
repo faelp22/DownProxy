@@ -27,7 +27,7 @@ class CoreProcess {
     }// End get_icon
 
     public static function get_title() {
-        return 'DownProxy v-1.0 Release'; // refactore
+        return 'DownProxy v-1.1 Release'; // refactore
     }// End get_title
 
     public static function get_css($baseURL, $baseFile) {

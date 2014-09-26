@@ -12,7 +12,7 @@ require 'init_autoloader.php';
 \controller\ListeningGet::error();
 
 $timeCliente = 10;
-$limitSizeFile = 50;
+$limitSizeFile = 200;
 
 $time = \model\Date::nDate('now');
 $path = \PROJECT_PATH . 'temp' . \DS;
@@ -24,14 +24,14 @@ if (isset($_SESSION['proxy'])):
     $diff = $avv->diff(\model\Date::nDate('now'));
     if ($diff->i >= $timeCliente):
         \model\CommonDir::rmd($path, $_SESSION['folder']);
-        session_regenerate_id();
+        \session_regenerate_id();
         $_SESSION['proxy'] = $time;
         $_SESSION['folder'] = uniqid($time->getTimestamp());
         \model\CommonDir::mkd($path, $_SESSION['folder'], 0755);
     endif;
 else:
     $_SESSION['proxy'] = $time;
-    $_SESSION['folder'] = uniqid($time->getTimestamp());
+    $_SESSION['folder'] = \uniqid($time->getTimestamp());
     \model\CommonDir::mkd($path, $_SESSION['folder'], 0755);
 endif;
 
@@ -41,11 +41,14 @@ if(isset($_SESSION['folder'])):
 endif;
 
 if (isset($_POST['url'])):
-    $fileUrl = $_POST['url'];
-    $fileName = $_POST['nome'];
-    $fileName .= '.new';
+    $fileUrl = ($_POST['url']);
+    $fileName = \trim($_POST['nome']);
+    if($fileName == NULL):
+        $fileName = \common_hash\GenIdHash::genIdHash(6);
+    endif;
+    $fileName .= '.'.\common_hash\GenIdHash::genIdHash(3);
     $fileSize = \controller\CoreProcess::get_remote_filesize($fileUrl);
-    if(($fileSize / 1024)/1024 >= $limitSizeFile):
+    if(($fileSize / 1024) / 1024 >= $limitSizeFile):
         header('Location: '.\PROJECT_INDEX.'?error=file_size');
     else:
         \model\GetFile::get_File($path.$_SESSION['folder'].\DS, $fileUrl, $fileName);
@@ -76,7 +79,7 @@ function get_content() {
             echo '<tr>';
             echo '<td>' . $n . '</td>';
             echo "<td><a href='" . $index . \DS . $arquivo . "'>" . $arquivo . "</a></td>";
-            $temp2 = filemtime($path . $pasta . \DS . $arquivo);
+            $temp2 = \filemtime($path . $pasta . \DS . $arquivo);
             $temp2C = \model\Date::nDate();
             $temp2C->setTimezone(new DateTimezone("America/Fortaleza"));
             $temp2C->setTimestamp($temp2);

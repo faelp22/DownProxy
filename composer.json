@@ -5,7 +5,7 @@
     "keywords": ["download, remoto, externo"],
     "homepage": "https://github.com/faelp22/DownProxy",
     "type": "Application",
-    "version": "1.0",
+    "version": "1.1",
     "authors": [
         {
             "name": "Isael Sousa",
@@ -13,7 +13,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "faelp22/common_hash": "dev-master"
     },
     "autoload": {
         "psr-0": {
