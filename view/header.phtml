@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?php echo \controller\CoreProcess::get_description(); ?>">
-    <meta name="author" content="<?php echo \controller\CoreProcess::get_author(); ?>">
-    <link rel="icon" href="<?php echo \controller\CoreProcess::get_icon(); ?>">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="<?php echo \controller\CoreProcess::get_description(); ?>">
+        <meta name="author" content="<?php echo \controller\CoreProcess::get_author(); ?>">
+        <link rel="icon" href="<?php echo \controller\CoreProcess::get_icon(); ?>">
+        <title><?php echo \controller\CoreProcess::get_title(); ?></title>
 
-    <title><?php echo \controller\CoreProcess::get_title(); ?></title>
+        <!-- Bootstrap core CSS -->
 
-    <!-- Bootstrap core CSS -->
-    
-    <?php get_css();?>
-    
-    <script type="text/javascript">
+        <?php get_css(); ?>
+
+        <script type="text/javascript">
             var countM = new Number();
             var count = new Number();
             var countM = "<?php echo ($timeCliente - $diff->i) - 1; ?>";
             var count = "<?php echo 60 - $diff->s; ?>";
-    </script>
-    
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    
+            var index = "<?php echo $index; ?>";
+        </script>    
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+
     </head>
-    <body onload="start();">
+    <body>

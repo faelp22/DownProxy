@@ -23,7 +23,7 @@ class ListeningGet {
             case 'file_size':
                 $alert_type = "danger";
                 $alert_title = "Arquivo muito grande! ";
-                $alert_mensagem = 'Nosso limite é de 50 MegaBytes';
+                $alert_mensagem = 'Nosso limite é de '.$_GET['size'].' MegaBytes';
                 include_once \PROJECT_PATH . 'view/alerts/alert.phtml';
                 break;
             case 'documente_not_found':

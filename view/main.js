@@ -1,4 +1,5 @@
-function start() {
+jQuery(document).ready(function update_time() {
+    index;
     if ((countM - 1) >= -1) {
         if ((count - 1) >= 0) {
             count = count - 1;
@@ -12,16 +13,32 @@ function start() {
                 tempo.innerHTML = '0' + countM;
             }
         }
-        if (count == 0) {
+        if (count === 0) {
             countM = countM - 1;
             count = 60;
-            document.location.reload();
+            //document.location.reload();
+            //document.location.href=index;
         }
     } else {
         msg.innerHTML = ":( ";
         tempo2.innerHTML = ' !';
         tempo.innerHTML = "Tempo esgotado";
-        document.location.reload();
+        document.location.href = index;
+        //document.location.index;
     }
-    setTimeout('start();', 1000);
-}
+    setTimeout(update_time, 1000);
+});
+
+jQuery(document).ready(function () {
+    $('input[type=submit]').click(function () {
+        jQuery.ajax({
+            type: "POST",
+            url: "index.php",
+            //success: function(){
+            //    document.location.href = index;
+            //}
+        });
+
+        return false;
+    });
+});

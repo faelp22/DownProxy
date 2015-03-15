@@ -1,4 +1,5 @@
 <?php
+ini_set('memory_limit', '256M');
 session_start();
 
 // Setup autoloading
@@ -12,7 +13,7 @@ require 'init_autoloader.php';
 \controller\ListeningGet::error();
 
 $timeCliente = 10;
-$limitSizeFile = 200;
+$limitSizeFile = 50;
 
 $time = \model\Date::nDate('now');
 $path = \PROJECT_PATH . 'temp' . \DS;
@@ -49,9 +50,10 @@ if (isset($_POST['url'])):
     $fileName .= '.'.\common_hash\GenIdHash::genIdHash(3);
     $fileSize = \controller\CoreProcess::get_remote_filesize($fileUrl);
     if(($fileSize / 1024) / 1024 >= $limitSizeFile):
-        header('Location: '.\PROJECT_INDEX.'?error=file_size');
+        header('Location: '.\PROJECT_INDEX.'?error=file_size&size='.$limitSizeFile);
     else:
         \model\GetFile::get_File($path.$_SESSION['folder'].\DS, $fileUrl, $fileName);
+        \header('Location: '.\PROJECT_INDEX);
     endif;
 endif;
 
@@ -84,6 +86,7 @@ function get_content() {
             $temp2C->setTimezone(new DateTimezone("America/Fortaleza"));
             $temp2C->setTimestamp($temp2);
             echo '<td>' . $temp2C->format('d/m/Y H:i:s') . '</td>';
+            echo '<td> Kb: ' . number_format(filesize($path . $pasta . \DS . $arquivo)/1024, 2, '.', '') . '</td>';
             echo '</tr>';
             $n++;
         endif;
